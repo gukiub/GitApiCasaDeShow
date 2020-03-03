@@ -1,0 +1,83 @@
+@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Cadastrar";
+    Layout = "";
+}
+
+
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/Login_v16/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v16/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v16/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v16/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v16/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/Login_v16/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v16/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v16/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/Login_v16/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v16/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/Login_v16/css/main.css">
+
+
+<div class="limiter">
+    <div class="container-login100" style="background-image: url('/Login_v16/images/bg-01.jpg');">
+        <div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+					Cadastro
+				</span>
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="login100-form validate-form p-b-33 p-t-5">
+            <div class="wrap-input100 validate-input">
+                <input asp-for="Input.Nome" class="input100" placeholder="Nome" required/>
+                
+            </div>
+            <div class="wrap-input100 validate-input">
+                <input asp-for="Input.Email" class="input100" placeholder="Email@email" required/>
+                
+            </div>
+            <div class="wrap-input100 validate-input">
+                <input asp-for="Input.Password" class="input100" placeholder="Senha" required/>
+                
+            </div>
+            <div class="wrap-input100 validate-input">
+                <input asp-for="Input.ConfirmPassword" class="input100" placeholder="Confirme sua senha" required/>
+                
+            </div>
+            <div class="container-login100-form-btn m-t-32">
+                <div class="checkbox">
+                        <label asp-for="Input.Admin">
+                            <input asp-for="Input.Admin"/>
+                            Você possui uma casa de show?
+                        </label><br>
+
+                <center><button type="submit" class="login100-form-btn">Cadastrar</button><p class="mt-4">
+
+                
+                <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Fazer Login</a>
+
+                </p>
+            </div>
+            <div class="container-login100-form-btn m-t-32">
+                <span asp-validation-for="Input.Nome" class="text-danger ml-4 mr-4"></span>
+                <span asp-validation-for="Input.Email" class="text-danger ml-4 mr-4"></span>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            </center>
+        </form>
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

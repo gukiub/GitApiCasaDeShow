@@ -1,0 +1,130 @@
+@model IEnumerable<CasaDeShows.Models.Eventos>
+
+@using CasaDeShows.Models
+
+@{
+    ViewData["Title"] = "teste";
+    Layout = "_LayoutUser";
+    var eventos = Model.Count(); // conta quantos eventos possui na model
+}
+
+@if (eventos == 0)
+{
+    <div class="container">
+        <div class="jumbotron mt-4 text-center" style="height: 30em;">
+            <h1 class="text-danger text-center mt-4" style="font-size: 80px; border: 2px solid black; border-radius: 25px;">Nenhum Evento Disponivel no momento, volte novamente mais tarde.</h1>
+            <p class="mt-4">
+                <a class="btn btn-danger" asp-controller="Home" asp-action="Index" style="width: 20%; border: 2px solid black; margin-top: 3em;">Voltar</a>
+            </p>
+        </div>
+    </div>
+}
+
+            <div class="container" style="background-color: gray;">
+                @foreach (var item in Model)
+                {
+                    <div class="card text-center" style="width: 18rem; float: left; margin-left: 5em; margin-top: 3em; margin-bottom: 3em;">
+                        <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.Imagem)" alt="Foto do Evento" style="overflow: hidden;">
+                        <div class="card-body">
+                            <h3 class="card-title text-dark mb-0">@Html.DisplayFor(modelItem => item.Nome)</h3>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Local : @Html.DisplayFor(modelItem => item.CasaDeShows.Local)</li>
+                            <li class="list-group-item">Ingressos Disponiveis: @Html.DisplayFor(modelItem => item.Ingressos)</li>
+                            <li class="list-group-item" id="data">Data: @Html.DisplayFor(modelItem => item.Data) </li>
+                            <li class="list-group-item">Preço: R$@Html.DisplayFor(modelItem => item.Preco) </li>
+                            
+                            <!-- codigo para substituir o numero que retorna da classe enum genero por um texto -->
+                            @{
+                                switch(item.Genero){
+                                    case 1:
+                                        <li class="list-group-item">Gênero: Rock</li>
+                                        break;
+                                    case 2:
+                                        <li class="list-group-item">Gênero: Kpop</li>
+                                        break;
+                                    case 3:
+                                        <li class="list-group-item">Gênero: Pagode</li>
+                                        break;
+                                    case 4:
+                                        <li class="list-group-item">Gênero: Samba</li>
+                                        break;
+                                    case 5:
+                                        <li class="list-group-item">Gênero: Sertanejo</li>
+                                        break;
+                                    case 6:
+                                        <li class="list-group-item">Gênero: Metal</li>
+                                        break;
+                                    case 7:
+                                        <li class="list-group-item">Gênero: Eletronica</li>
+                                        break;
+                                    case 8:
+                                        <li class="list-group-item">Gênero: JRock</li>
+                                        break;
+                                    case 9:
+                                        <li class="list-group-item">Gênero: Pop</li>
+                                        break;
+                                    case 10:
+                                        <li class="list-group-item">Gênero: Forró</li>
+                                        break;
+                                    case 11:
+                                        <li class="list-group-item">Gênero: Funk</li>
+                                        break;
+                                    case 12:
+                                        <li class="list-group-item">Gênero: Reggae</li>
+                                        break;
+                                    case 13:
+                                        <li class="list-group-item">Gênero: Rap</li>
+                                        break;
+                                    case 14:
+                                        <li class="list-group-item">Gênero: Gospel</li>
+                                        break;
+                                    case 15:
+                                        <li class="list-group-item">Gênero: MPB</li>
+                                        break;
+                                    case 16:
+                                        <li class="list-group-item">Gênero: Outros</li>
+                                        break;
+                                    default:
+                                        <li class="list-group-item">Gênero: Erro</li>
+                                        break;
+                                }
+                            }
+                            
+                        </ul>
+                        <div class="card-body">
+                            <a asp-action="Comprando" class="btn btn-primary" asp-route-id="@item.Id">Comprar</a>
+                        </div>
+                    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+                }
+            </div>
+
+            <script src="~/js/jquery-3.4.1-COMPLETASSO.js"></script>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#myModal").on("shown.bs.modal", function () {
+                            $("#btnComprar").trigger("focus");
+                        });
+                    });
+                </script>

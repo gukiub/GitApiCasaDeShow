@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CasaDeShows</name>
+    </assembly>
+    <members>
+        <member name="M:CasaDeShows.Models.ApiCasasController.Get">
+            <summary>
+            Recupera todas as casas
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Models.ApiCasasController.Get(System.Int32)">
+            <summary>
+            Recupera uma casa de show
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Models.ApiCasasController.Post(CasaDeShows.Models.ApiCasasController.casaTemp)">
+            <summary>
+            Cria uma nova casa de show.
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Models.ApiCasasController.Delete(System.Int32)">
+            <summary>
+            Deleta uma casa de show
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Models.ApiCasasController.Patch(CasaDeShows.Models.ApiCasasController.casaParaAtualizar)">
+            <summary>
+            Altera uma casa de show
+            </summary>
+        </member>
+    </members>
+</doc>

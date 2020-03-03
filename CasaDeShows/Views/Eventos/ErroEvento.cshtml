@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Erro";
+    
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container">
+    <div class="jumbotron mt-4 text-center" style="height: 30em;">
+        <h1 class="text-danger text-center mt-4" style="font-size: 80px; border: 2px solid black; border-radius: 25px;">Cadastre uma casa de shows antes de cadastrar um evento.</h1>
+        <p class="mt-4">
+            <a class="btn btn-success" asp-controller="Admin" asp-action="Create" style="width: 20%; border: 2px solid black; margin-top: 3em;">Cadastrar</a>
+            <a class="btn btn-danger" asp-controller="Home" asp-action="Index" style="width: 20%; border: 2px solid black; margin-top: 3em;">Voltar</a>
+        </p>
+    </div>
+</div>

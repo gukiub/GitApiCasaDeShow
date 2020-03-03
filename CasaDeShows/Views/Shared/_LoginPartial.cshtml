@@ -1,0 +1,28 @@
+﻿@*injetando usuário na view*@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a  class="btn btn-success rounded" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Olá @User.FindFirst("Nome").Value</a>
+    </li>
+    <li class="nav-item">
+        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button  type="submit" class="btn btn-primary rounded ml-2">Logout</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-success rounded">Cadastre-se</a>                
+    </li>
+    <li class="nav-item">
+        <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-primary rounded ml-2">Login</a>
+    </li>
+}
+</ul>

@@ -1,0 +1,69 @@
+﻿@model CasaDeShows.DTO.ImagemEventoDTO
+
+@{
+    var id = ViewData["eventoId"] as string;
+    ViewData["Title"] = "SalvaImagemEvento";
+}
+
+
+<div class="container">
+    <div class="jumbotron">
+<h1 class="text-dark">Salvar Imagem do Evento</h1>
+
+<hr />
+
+
+<div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group col-12 ml-4">
+                <img id="foto" src="~/Login_v16/images/bg-01.jpg" class="border rounded-circle border-dark" style="width: 300px; height: 300px; "/>
+            </div>
+            <form asp-action="SalvarImagem" enctype="multipart/form-data" method="post">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ImagemEvento" class="control-label">Foto De Perfil</label>
+                    <input asp-for="ImagemEvento" class="form-control p-1" type="file" onchange="readURL(this);" required />
+                    <span asp-validation-for="ImagemEvento" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="EventoId" class="form-control p-1" value="@(id)" type="hidden" required />
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Criar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Voltar para a lista</a>
+    </div>
+</div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+<!-- script para subir a imagem do computador -->
+<script>function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#foto')
+                    .attr('src', e.target.result)
+                    .width(300)
+                    .height(300);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }</script>
+

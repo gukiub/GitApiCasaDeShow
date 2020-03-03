@@ -1,0 +1,125 @@
+@model CasaDeShows.DTO.EventoDTO
+
+@{
+    ViewData["Title"] = "Criar";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <p>
+            <h1 class="text-dark">Criar Eventos</h1>
+        </p>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Nome" class="control-label"></label>
+                        <input asp-for="Nome" class="form-control" id="nome" required />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Preco" class="control-label"></label>
+                        <input asp-for="Preco" type="number" class="form-control" id="preco" required />
+                        <span asp-validation-for="Preco" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Data" class="control-label"></label>
+                        <input asp-for="Data" type="date" class="form-control" id="data" required />
+                        <span asp-validation-for="Data" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Ingressos" class="control-label"></label>
+                        <input asp-for="Ingressos" type="number" class="form-control" id="ingressos" required />
+                        <span asp-validation-for="Ingressos" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CasaDeShowsId" class="control-label">Casa de Show</label>
+                        <select asp-for="CasaDeShowsId" class="form-control" id="casaDeShowsId" asp-items='@(new SelectList(@ViewBag.batata, "Id", "Nome"))' required>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="GeneroId" class="control-label">Genero</label>
+                        <select asp-for="GeneroId" class="form-control" id="generoId" asp-items="Html.GetEnumSelectList<Generos>()" required>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="button" value="Criar" class="btn btn-primary" id="btnCadastrar" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Voltar para a lista</a>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/js/jquery-3.4.1-COMPLETASSO.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        function Evento(){
+            var Nome;
+            var CasaDeShowsId;
+            var Preco;
+            var Data;
+            var Ingressos;
+            var GeneroId;
+        }
+
+        $("#btnCadastrar").click(function() {
+            var evento = new Evento();
+            evento.Nome = $("#nome").val();
+            evento.CasaDeShowsId = $("#casaDeShowsId").val();
+            evento.Preco = $("#preco").val();
+            evento.Data = $("#data").val();
+            evento.Ingressos = $("#ingressos").val();
+            evento.GeneroId = $("#generoId").val();
+            console.log(evento);
+
+            $.ajax({
+                url: '@Url.Action("EnviaForm", "Eventos")',
+                contentType: "application/json; charset=utf-8",
+                type: 'POST',
+                data: JSON.stringify(evento),
+                success: function (data) {
+                    // evento.Ingressos com erro
+                    var temp = data;
+
+                    if (data.includes('erro')) {
+                        event.preventDefault();
+                        if (evento.Nome == "" || evento.CasaDeShowsId == "" || evento.Preco == "" || evento.Ingressos == "" || evento.Data == "") {
+                            alert("preencha os campos");
+                        } else {
+                            alert("Nome em uso por favor escolha outro");
+                        }
+                    }
+                    else {
+                        if (!evento.Nome == "" && !evento.CasaDeShowsId == "" && !evento.Preco == "" && !evento.Ingressos == "" && !evento.Data == "") {
+                            window.location.href = '@Url.Action("SalvaImagemEvento", "Eventos")' + "?Id=" + data;
+                        } else {
+                            alert("preencha os campos");
+                        }
+                    }
+                },
+                error: function (e) {
+                    //called when there is an error
+                    //console.log(e.message);
+                }
+            });
+        });
+
+    });
+</script>
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js">
+    </script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js">
+    </script>
+}
