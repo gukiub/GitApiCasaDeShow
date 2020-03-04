@@ -6,12 +6,12 @@ using CasaDeShows.Models;
 
 namespace CasaDeShows.Models
 {
+    
     [Route("api/v1/casas")]
     [ApiController]
     public class ApiCasasController : ControllerBase
     {
         readonly ApplicationDbContext _context;
-
 
         public ApiCasasController(ApplicationDbContext context){
             _context = context;
@@ -26,6 +26,20 @@ namespace CasaDeShows.Models
             return Ok(new{casas});
         }
 
+        /// <summary>
+        /// Recupera as casas de show em ordem alfabética
+        /// </summary>
+        [HttpGet("asc")]
+        public IActionResult GetAsc(){
+            var casas = _context.casasDeShow.OrderBy(cs => cs.Nome).ToList();
+            return Ok(new{casas});
+        }
+
+        [HttpGet("desc")]
+        public IActionResult GetDesc(){
+            var casas = _context.casasDeShow.OrderByDescending(cs => cs.Nome).ToList();
+            return Ok(new{casas});
+        }
 
         /// <summary>
         /// Recupera uma casa de show
@@ -44,6 +58,11 @@ namespace CasaDeShows.Models
             }
         }
 
+        [HttpGet("nome/{nome}")]
+        public IActionResult GetNomeAsc(string nome){
+            var casas = _context.casasDeShow.Where(cs => cs.Nome == nome);
+            return Ok(new{casas});
+        }
 
         /// <summary>
         /// Cria uma nova casa de show.
@@ -129,7 +148,7 @@ namespace CasaDeShows.Models
             }
         }
 
-
+        
         public class casaTemp {
             public string Nome {get; set;}
             public string Local {get; set;}

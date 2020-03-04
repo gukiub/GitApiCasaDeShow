@@ -9,6 +9,11 @@
             Recupera todas as casas
             </summary>
         </member>
+        <member name="M:CasaDeShows.Models.ApiCasasController.GetAsc">
+            <summary>
+            Recupera as casas de show em ordem alfabética
+            </summary>
+        </member>
         <member name="M:CasaDeShows.Models.ApiCasasController.Get(System.Int32)">
             <summary>
             Recupera uma casa de show
@@ -25,6 +30,26 @@
             </summary>
         </member>
         <member name="M:CasaDeShows.Models.ApiCasasController.Patch(CasaDeShows.Models.ApiCasasController.casaParaAtualizar)">
+            <summary>
+            Altera uma casa de show
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiEventosController.Get">
+            <summary>
+            Recupera todas as casas
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiEventosController.Get(System.Int32)">
+            <summary>
+            Recupera uma casa de show
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiEventosController.Post(CasaDeShows.Controllers.ApiEventosController.Eventotemp)">
+            <summary>
+            Cria uma nova casa de show.
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiEventosController.Patch(CasaDeShows.Controllers.ApiEventosController.EventoParaAtualizar)">
             <summary>
             Altera uma casa de show
             </summary>
