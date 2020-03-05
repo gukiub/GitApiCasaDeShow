@@ -20656,6 +20656,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\GOLS\\Desktop\\Projetos-GFT\\C#\\AspNet Core\\CasaDeShows\\Views\\User\\Historico.cshtml",
+      "TargetPath": "Views\\User\\Historico.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\GOLS\\Desktop\\Projetos-GFT\\C#\\AspNet Core\\CasaDeShows\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"

@@ -29,6 +29,13 @@ namespace CasaDeShows.Controllers
             return View(eventos);
         }
 
+        [HttpGet]
+        [Authorize]
+        public IActionResult Historico(){
+            var historico = _context.Compras.Where(batata => batata.User.UserName == User.Identity.Name).ToList();
+            return View(historico);
+        }
+
         [Authorize]
         [HttpGet]
         public IActionResult Comprando(int id) {
@@ -50,6 +57,21 @@ namespace CasaDeShows.Controllers
         [HttpPost]
         public IActionResult ConfirmarCompra(int quantidade, [Bind("Id")] EventoDTO eventos) {
             var compra = _context.Eventos.Where(eve => eve.Id == eventos.Id).FirstOrDefault();
+            var casa = _context.casasDeShow.ToList();
+            var user = _context.Users.ToList();
+
+            Compras hist = new Compras();
+            hist.Nome = compra.Nome;
+            hist.Data = compra.Data;
+            hist.Preco = compra.Preco * quantidade;
+            hist.Genero = compra.Genero;
+            hist.Imagem = compra.Imagem;
+            hist.User = compra.User;
+            hist.Quantidade = quantidade;
+            hist.Local = compra.CasaDeShows.Local;
+             
+            _context.Add(hist);
+
             compra.Ingressos -= quantidade; // ao realizar a compra desconta o ingresso
             _context.Attach(compra).State = EntityState.Modified; // diz que o objeto foi modificado
             _context.SaveChanges(); // sobe para o banco

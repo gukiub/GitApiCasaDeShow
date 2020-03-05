@@ -18,7 +18,7 @@ namespace CasaDeShows.Controllers
         }
 
         /// <summary>
-        /// Recupera todas as casas
+        /// Recupera todos os eventos
         /// </summary>
         [HttpGet]
         public IActionResult Get(){
@@ -27,6 +27,12 @@ namespace CasaDeShows.Controllers
             return Ok(new{eventos});
         }
 
+        /// <summary>
+        /// Recupera os eventos em ordem alfabética pela capacidade (crescente) 
+        /// </summary>
+        /// <remarks>
+        /// observação: capacidade está com o nome de ingressos
+        /// </remarks>
         [HttpGet("capacidade/asc")]
         public IActionResult GetCapAsc(){
             var casas = _context.casasDeShow.ToList();
@@ -34,13 +40,22 @@ namespace CasaDeShows.Controllers
             return Ok(new{eventos});
         }
 
+        /// <summary>
+        /// Recupera os eventos em ordem alfabética pela capacidade (decrescente) 
+        /// </summary>
+        /// <remarks>
+        /// observação: capacidade está com o nome de ingressos
+        /// </remarks>
         [HttpGet("capacidade/desc")]
         public IActionResult GetCapDesc(){
             var casas = _context.casasDeShow.ToList();
             var eventos = _context.Eventos.OrderByDescending(eve => eve.Ingressos).ToList();
             return Ok(new{eventos});
         }
-
+        
+        /// <remarks>
+        /// Recupera os eventos em ordem alfabética (crescente) 
+        /// </remarks>
         [HttpGet("data/asc")]
         public IActionResult GetDataAsc(){
             var casas = _context.casasDeShow.ToList();

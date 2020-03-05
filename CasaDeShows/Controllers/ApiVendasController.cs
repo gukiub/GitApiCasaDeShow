@@ -19,7 +19,24 @@ namespace CasaDeShows.Controllers
 
         [HttpGet]
         public IActionResult Get(){
-            return Ok();
+            var compras = _context.Compras.ToList();
+            var casa = _context.casasDeShow.ToList();
+            return Ok(new{compras});
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id){
+            try
+            {
+                var compras = _context.Compras.First(compra => compra.Id == id);
+                var casa = _context.casasDeShow.ToList();
+                return Ok(new {compras});
+            }
+            catch (Exception)
+            {
+                Response.StatusCode = 404;
+                return new ObjectResult(new {msg = "Id não encontrado"});
+            }
         }
     }
 }

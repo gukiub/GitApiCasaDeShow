@@ -11,12 +11,22 @@
         </member>
         <member name="M:CasaDeShows.Models.ApiCasasController.GetAsc">
             <summary>
-            Recupera as casas de show em ordem alfabética
+            Recupera as casas de show em ordem alfabética (crescente) 
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Models.ApiCasasController.GetDesc">
+            <summary>
+            Recupera as casas de show em ordem alfabética (decrescente) 
             </summary>
         </member>
         <member name="M:CasaDeShows.Models.ApiCasasController.Get(System.Int32)">
             <summary>
-            Recupera uma casa de show
+            Recupera uma casa de show pelo id
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Models.ApiCasasController.GetNomeAsc(System.String)">
+            <summary>
+            Recupera as casas de show pelo nome
             </summary>
         </member>
         <member name="M:CasaDeShows.Models.ApiCasasController.Post(CasaDeShows.Models.ApiCasasController.casaTemp)">
@@ -31,13 +41,34 @@
         </member>
         <member name="M:CasaDeShows.Models.ApiCasasController.Patch(CasaDeShows.Models.ApiCasasController.casaParaAtualizar)">
             <summary>
-            Altera uma casa de show
+            Altera uma casa de show 
             </summary>
         </member>
         <member name="M:CasaDeShows.Controllers.ApiEventosController.Get">
             <summary>
-            Recupera todas as casas
+            Recupera todos os eventos
             </summary>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiEventosController.GetCapAsc">
+            <summary>
+            Recupera os eventos em ordem alfabética pela capacidade (crescente) 
+            </summary>
+            <remarks>
+            observação: capacidade está com o nome de ingressos
+            </remarks>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiEventosController.GetCapDesc">
+            <summary>
+            Recupera os eventos em ordem alfabética pela capacidade (decrescente) 
+            </summary>
+            <remarks>
+            observação: capacidade está com o nome de ingressos
+            </remarks>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiEventosController.GetDataAsc">
+            <remarks>
+            Recupera os eventos em ordem alfabética (crescente) 
+            </remarks>
         </member>
         <member name="M:CasaDeShows.Controllers.ApiEventosController.Get(System.Int32)">
             <summary>

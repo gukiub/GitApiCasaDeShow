@@ -1,0 +1,72 @@
+@model IEnumerable<CasaDeShows.Models.Compras>
+
+@using CasaDeShows.Models
+
+@{
+    ViewData["Title"] = "Historico";
+    Layout = "_LayoutUser";
+    var historico = Model.Count(); // conta quantos eventos possui na model
+}
+
+@if (historico == 0)
+{
+    <div class="container">
+        <div class="jumbotron mt-4 text-center" style="height: 30em;">
+            <h1 class="text-danger text-center mt-4" style="font-size: 80px; border: 2px solid black; border-radius: 25px;">Nenhuma compra Disponivel no momento, realize uma compra e tente novamente.</h1>
+            <p class="mt-4">
+                <a class="btn btn-danger" asp-controller="Home" asp-action="Index" style="width: 20%; border: 2px solid black; margin-top: 3em;">Voltar</a>
+            </p>
+        </div>
+    </div>
+}
+
+            <div class="container" style="background-color: gray;">
+                @foreach (var item in Model)
+                {
+                    <div class="card text-center" style="width: 18rem; float: left; margin-left: 5em; margin-top: 3em; margin-bottom: 3em;">
+                        <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.Imagem)" alt="Foto do Evento" style="overflow: hidden;">
+                        <div class="card-body">
+                            <h3 class="card-title text-dark mb-0">@Html.DisplayFor(modelItem => item.Nome)</h3>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Local : @Html.DisplayFor(modelItem => item.Local)</li>
+                            <li class="list-group-item">Comprados: @Html.DisplayFor(modelItem => item.Quantidade)</li>
+                            <li class="list-group-item" id="data">Data: @Html.DisplayFor(modelItem => item.Data) </li>
+                            <li class="list-group-item">total: R$@Html.DisplayFor(modelItem => item.Preco) </li>
+                            
+                
+                            
+                        </ul>
+                    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+                }
+            </div>
+
+            <script src="~/js/jquery-3.4.1-COMPLETASSO.js"></script>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#myModal").on("shown.bs.modal", function () {
+                            $("#btnComprar").trigger("focus");
+                        });
+                    });
+                </script>

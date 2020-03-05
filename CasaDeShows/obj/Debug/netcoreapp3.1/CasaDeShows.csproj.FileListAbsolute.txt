@@ -555,3 +555,4 @@ C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\bin\Debug\netcorea
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Annotations.dll
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\bin\Debug\netcoreapp3.1\CasaDeShows.xml
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\CasaDeShows.xml
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\User\Historico.cshtml.g.cs

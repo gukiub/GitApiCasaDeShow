@@ -27,14 +27,17 @@ namespace CasaDeShows.Models
         }
 
         /// <summary>
-        /// Recupera as casas de show em ordem alfabética
+        /// Recupera as casas de show em ordem alfabética (crescente) 
         /// </summary>
         [HttpGet("asc")]
         public IActionResult GetAsc(){
             var casas = _context.casasDeShow.OrderBy(cs => cs.Nome).ToList();
             return Ok(new{casas});
         }
-
+        
+        /// <summary>
+        /// Recupera as casas de show em ordem alfabética (decrescente) 
+        /// </summary>
         [HttpGet("desc")]
         public IActionResult GetDesc(){
             var casas = _context.casasDeShow.OrderByDescending(cs => cs.Nome).ToList();
@@ -42,7 +45,7 @@ namespace CasaDeShows.Models
         }
 
         /// <summary>
-        /// Recupera uma casa de show
+        /// Recupera uma casa de show pelo id
         /// </summary>
         [HttpGet("{id}")]
         public IActionResult Get(int id){
@@ -58,6 +61,9 @@ namespace CasaDeShows.Models
             }
         }
 
+        /// <summary>
+        /// Recupera as casas de show pelo nome
+        /// </summary>
         [HttpGet("nome/{nome}")]
         public IActionResult GetNomeAsc(string nome){
             var casas = _context.casasDeShow.Where(cs => cs.Nome == nome);
@@ -112,8 +118,9 @@ namespace CasaDeShows.Models
 
 
         /// <summary>
-        /// Altera uma casa de show
+        /// Altera uma casa de show 
         /// </summary>
+       
         [HttpPatch]
         public IActionResult Patch([FromBody] casaParaAtualizar casa){
             if (casa.Id > 0){

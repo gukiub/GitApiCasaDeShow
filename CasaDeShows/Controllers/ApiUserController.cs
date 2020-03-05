@@ -28,8 +28,10 @@ namespace CasaDeShows.Controllers
             try{
                 var user = _context.Users.Select(
                     x => new UserTemp{id = x.Id, 
-                    email = x.Email, 
-                    username = x.UserName
+                    username = x.UserName,
+                    emailConfimado = x.EmailConfirmed,
+                    telefone = x.PhoneNumber,
+                    nome = User.FindFirst("Nome").Value
                 }).First(user => user.username == username);
                 return Ok(new{user});
             }catch(Exception){
@@ -41,8 +43,14 @@ namespace CasaDeShows.Controllers
 
         public class UserTemp{
             public string id{get;set;}
-            public string email { get; set; }
+
+            public string nome {get;set;}
+
             public string username { get; set; }
+
+            public bool emailConfimado { get; set;}
+
+            public string telefone { get; set;}
         }
     }
 }
