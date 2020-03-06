@@ -38,7 +38,7 @@ namespace CasaDeShows
                 config.Password.RequireLowercase = false;
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(conf => conf.AllowEmptyInputInBodyModelBinding = true);
             services.AddRazorPages();
 
             // injeção de dependencia passa o dataservice para toda a aplicação, necessário para gerar o banco automaticamente

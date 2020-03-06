@@ -51,7 +51,7 @@
         </member>
         <member name="M:CasaDeShows.Controllers.ApiEventosController.GetCapAsc">
             <summary>
-            Recupera os eventos em ordem alfabética pela capacidade (crescente) 
+            Recupera os eventos pela capacidade (crescente) 
             </summary>
             <remarks>
             observação: capacidade está com o nome de ingressos
@@ -59,30 +59,80 @@
         </member>
         <member name="M:CasaDeShows.Controllers.ApiEventosController.GetCapDesc">
             <summary>
-            Recupera os eventos em ordem alfabética pela capacidade (decrescente) 
+            Recupera os eventos pela capacidade (decrescente) 
             </summary>
             <remarks>
             observação: capacidade está com o nome de ingressos
             </remarks>
         </member>
         <member name="M:CasaDeShows.Controllers.ApiEventosController.GetDataAsc">
-            <remarks>
-            Recupera os eventos em ordem alfabética (crescente) 
-            </remarks>
+            <summary>
+            Recupera os eventos pela data (crescente) 
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiEventosController.GetDataDesc">
+            <summary>
+            Recupera os eventos pela data (decrescente) 
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiEventosController.GetNomeAsc">
+            <summary>
+            Recupera os eventos pelo nome (crescente) 
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiEventosController.GetNomedesc">
+            <summary>
+            Recupera os eventos pelo nome (decrescente) 
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiEventosController.GetPrecoAsc">
+            <summary>
+            Recupera os eventos pelo preço (crescente) 
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiEventosController.GetPrecodesc">
+            <summary>
+            Recupera os eventos pelo preço (decrescente) 
+            </summary>
         </member>
         <member name="M:CasaDeShows.Controllers.ApiEventosController.Get(System.Int32)">
             <summary>
-            Recupera uma casa de show
+            Recupera um evento pelo id
             </summary>
         </member>
         <member name="M:CasaDeShows.Controllers.ApiEventosController.Post(CasaDeShows.Controllers.ApiEventosController.Eventotemp)">
             <summary>
-            Cria uma nova casa de show.
+            Cria um novo evento.
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiEventosController.Delete(System.Int32)">
+            <summary>
+            Deleta um evento.
             </summary>
         </member>
         <member name="M:CasaDeShows.Controllers.ApiEventosController.Patch(CasaDeShows.Controllers.ApiEventosController.EventoParaAtualizar)">
             <summary>
-            Altera uma casa de show
+            Altera um evento
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiUserController.Get">
+            <summary>
+            lista os usuários.
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiUserController.Get(System.String)">
+            <summary>
+            encontra um usuário pelo login.
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiVendasController.Get">
+            <summary>
+            lista as compras.
+            </summary>
+        </member>
+        <member name="M:CasaDeShows.Controllers.ApiVendasController.Get(System.Int32)">
+            <summary>
+            localiza uma compra pelo id.
             </summary>
         </member>
     </members>

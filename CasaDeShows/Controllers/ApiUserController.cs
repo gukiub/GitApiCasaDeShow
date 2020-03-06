@@ -16,13 +16,19 @@ namespace CasaDeShows.Controllers
         public ApiUserController(ApplicationDbContext context){
             _context = context;
         }
-
+        
+        /// <summary>
+        /// lista os usuários.
+        /// </summary>
         [HttpGet]
         public IActionResult Get(){
             var user = _context.Users.Select(p => p.UserName).ToList();
             return Ok(new{user});
         }
 
+        /// <summary>
+        /// encontra um usuário pelo login.
+        /// </summary>
         [HttpGet("{username}")]
         public IActionResult Get(string username){
             try{

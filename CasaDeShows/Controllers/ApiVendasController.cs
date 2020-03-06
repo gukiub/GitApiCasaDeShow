@@ -17,6 +17,9 @@ namespace CasaDeShows.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// lista as compras.
+        /// </summary>
         [HttpGet]
         public IActionResult Get(){
             var compras = _context.Compras.ToList();
@@ -24,6 +27,9 @@ namespace CasaDeShows.Controllers
             return Ok(new{compras});
         }
 
+        /// <summary>
+        /// localiza uma compra pelo id.
+        /// </summary>
         [HttpGet("{id}")]
         public IActionResult Get(int id){
             try
