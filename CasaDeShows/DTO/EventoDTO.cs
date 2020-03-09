@@ -1,4 +1,5 @@
 ﻿using CasaDeShows.Models;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -28,5 +29,6 @@ namespace CasaDeShows.DTO
         [Required(ErrorMessage = "preencha o genero")]
         public string GeneroId { get; set; }
         public string CaminhoImagem { get; set; }
+        public IdentityUser User { get; set; }
     }
 }

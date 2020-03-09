@@ -36,8 +36,7 @@ namespace CasaDeShows.Controllers
                     x => new UserTemp{id = x.Id, 
                     username = x.UserName,
                     emailConfimado = x.EmailConfirmed,
-                    telefone = x.PhoneNumber,
-                    nome = User.FindFirst("Nome").Value
+                    telefone = x.PhoneNumber
                 }).First(user => user.username == username);
                 return Ok(new{user});
             }catch(Exception){

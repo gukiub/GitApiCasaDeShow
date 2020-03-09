@@ -11,6 +11,7 @@ using CasaDeShows.DTO;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace CasaDeShows.Controllers
 {
@@ -58,7 +59,10 @@ namespace CasaDeShows.Controllers
         public IActionResult ConfirmarCompra(int quantidade, [Bind("Id")] EventoDTO eventos) {
             var compra = _context.Eventos.Where(eve => eve.Id == eventos.Id).FirstOrDefault();
             var casa = _context.casasDeShow.ToList();
-            var user = _context.Users.ToList();
+            
+            var email = User.Identity.Name;
+            var user = _context.Users.Where(use => use.Email.Equals(email)).FirstOrDefault();
+            eventos.User = user;
 
             Compras hist = new Compras();
             hist.Nome = compra.Nome;
@@ -66,7 +70,7 @@ namespace CasaDeShows.Controllers
             hist.Preco = compra.Preco * quantidade;
             hist.Genero = compra.Genero;
             hist.Imagem = compra.Imagem;
-            hist.User = compra.User;
+            hist.User = eventos.User;
             hist.Quantidade = quantidade;
             hist.Local = compra.CasaDeShows.Local;
              
